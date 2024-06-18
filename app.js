@@ -29,7 +29,7 @@ app.get("/", (req, res) => {
     res.json({ message: "Hello World !" });
 });
 
-require("./common/routes/User.routes")(app);
+// require("./common/routes/User.routes")(app);
 require("./common/routes/Device.route")(app);
 require("./common/routes/Record.routes")(app);
 

@@ -18,16 +18,3 @@ L'API permet de récupérer les données collectées par votre DNest. Vous trouv
 **temperature** : La température enregistrée lors de la mesure
 
 **pressure** : La pression enregistrée lors de la mesure
-
----
-
-### Requêtes Privées
-| Type | Chemin | Paramètres |
-| ---- | ------ | ---------- |
-| POST | /api/device/ | admin_key |
-| POST | /api/device/create | admin_key, device_id |
-| POST | /api/device/delete | admin_key, device_id |
-
-**admin_key** : La clé administrateur
-
-**device_id** : L'identifiant unique du DNest
