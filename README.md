@@ -6,10 +6,10 @@ L'API permet de récupérer les données collectées par votre DNest. Vous trouv
 
 ### Requêtes Publiques
 
-| Type | Chemin | Paramètres |
-| ---- | ------ | ---------- |
-| GET | /api/records/:device_id | / |
-| POST | /api/records/register | device_id, timestamp, temperature, pressure |
+| Type | Chemin | Paramètres | Utilisation
+| ---- | ------ | ---------- | ----------- |
+| GET | /api/records/:device_id | / | Récupérer la liste des enregistrements |
+| POST | /api/records/register | device_id, timestamp, temperature, pressure | Ajouter un enregistrement |
 
 **device_id** : L'identifiant unique du DNest
 
