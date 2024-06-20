@@ -1,17 +1,17 @@
-module.exports = app => {
+module.exports = (app, authorization) => {
     const UserController = require("../controllers/User.controller")
 
     let router = require("express").Router();
 
-    router.post("/", UserController.create);
+    router.post("/create", UserController.create);
 
     router.get("/", UserController.findAll);
 
     router.get("/:username", UserController.findOne);
 
-    router.put("/:username", UserController.update);
+    router.post("/:username/modify", UserController.update);
 
-    router.delete("/:username", UserController.delete);
+    router.post("/:username/delete", UserController.delete);
 
-    app.use('/api/users', router);
+    app.use('/api/users', authorization, router);
 }

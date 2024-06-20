@@ -1,4 +1,4 @@
-module.exports = app => {
+module.exports = (app, authorization) => {
     const DeviceController = require("../controllers/Device.controller");
 
     let router = require("express").Router();
@@ -9,5 +9,5 @@ module.exports = app => {
 
     router.post("/", DeviceController.list);
 
-    app.use("/api/device", router);
+    app.use("/api/device", authorization, router);
 };

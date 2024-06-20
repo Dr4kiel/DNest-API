@@ -6,10 +6,10 @@ module.exports = (sequelize, Sequelize) => {
             primaryKey: true
         },
         device_id: {
-            type: Sequelize.STRING,
+            type: Sequelize.UUID,
             references: {
                 model: 'devices',
-                key: 'id'
+                key: 'signature'
             }
         },
         timestamp: {

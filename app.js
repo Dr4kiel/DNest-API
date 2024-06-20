@@ -1,6 +1,8 @@
 const express = require("express");
 const cors = require("cors");
 
+const authorization = require('./common/middleware/authentication');
+
 const app = express();
 
 const db = require('./common/models');
@@ -29,8 +31,8 @@ app.get("/", (req, res) => {
     res.json({ message: "Hello World !" });
 });
 
-// require("./common/routes/User.routes")(app);
-require("./common/routes/Device.route")(app);
+require("./common/routes/User.routes")(app, authorization);
+require("./common/routes/Device.route")(app, authorization);
 require("./common/routes/Record.routes")(app);
 
 // set port, listen for requests

@@ -19,7 +19,7 @@ exports.register = async (req, res) => {
     }
 
     // check if device exist
-    let device = await Device.findByPk(record.device_id);
+    let device = await Device.findOne({ where: { signature: record.device_id } })
     if (device === null) {
         res.status(404).send({
             message: "Your device are not registered."
@@ -39,7 +39,7 @@ exports.register = async (req, res) => {
 
 }
 
-exports.records = (req, res) => {
+exports.records = async (req, res) => {
     if (!req.params.device_id) {
         res.status(400).send({
             message: "I need a device id find records."
@@ -55,10 +55,14 @@ exports.records = (req, res) => {
         return;
     }
 
+    const device = await Device.findByPk(req.params.device_id);
+    console.log(device);
+
     Record.findAll({
         where: {
-            device_id: req.params.device_id
-        }
+            device_id: device.signature
+        },
+        attributes: ['timestamp', 'temperature', 'pressure', 'createdAt']
     })
         .then(data => {
             res.status(200).send(data);
