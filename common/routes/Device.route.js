@@ -7,7 +7,7 @@ module.exports = (app, authorization) => {
 
     router.post("/delete", DeviceController.delete);
 
-    router.post("/", DeviceController.list);
+    router.get("/", DeviceController.list);
 
     app.use("/api/device", authorization, router);
 };

@@ -4,12 +4,6 @@ const Device = db.Device;
 const Op = db.Sequelize.Op;
 
 exports.create = (req, res) => {
-    if (req.body.admin_key != admin_conf.ADMIN_KEY) {
-        res.status(403).send({
-            message: "This request is forbidden without admin rights."
-        })
-        return;
-    }
     if (!req.body.device_id) {
         res.status(400).send({
             message: "I need a device id to record it."
@@ -36,12 +30,6 @@ exports.update = (req, res) => {
 };
 
 exports.delete = (req, res) => {
-    if (req.body.admin_key != admin_conf.ADMIN_KEY) {
-        res.status(403).send({
-            message: "This request is forbidden without admin rights."
-        })
-        return;
-    }
     if (!req.body.device_id) {
         res.status(400).send({
             message: "I need a device id to record it."
@@ -73,12 +61,6 @@ exports.delete = (req, res) => {
 };
 
 exports.list = (req, res) => {
-    if (req.body.admin_key != admin_conf.ADMIN_KEY) {
-        res.status(403).send({
-            message: "This request is forbidden without admin rights."
-        })
-        return;
-    }
 
     Device.findAll({})
         .then(data => {
